@@ -47,9 +47,17 @@ python infer.py \
   --batch_size 32 \
   --save_dir eval_results
 ```
-### Cheetah Pose Examples
+The overall flow of Semantic-Skeleton is portrayed in the following diagram:
 
-<table> <tr> <td><img src="cheetah_1.gif" alt="Cheetah Pose Example 1" width="400"/></td> <td><img src="cheetah_2.gif" alt="Cheetah Pose Example 2" width="400"/></td> </tr> </table>
+<p align="center">
+  <img src="media/Presentation_16_diagram.png"
+       alt="Overview of the Semantic-Skeleton framework"
+       width="900">
+</p>
+
+### Prediction Examples
+
+<table> <tr> <td><img src="combine.gif" alt="Prediction Pose Example 1" width="400"/></td> <td><img src="combine_2.gif" alt="Prediction Pose Example 2" width="400"/></td> </tr> </table>
 
 ### BibTex Citation 
 ```bibtex
