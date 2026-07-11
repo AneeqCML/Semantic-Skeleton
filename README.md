@@ -50,7 +50,7 @@ python infer.py \
 The overall flow of Semantic-Skeleton is portrayed in the following diagram:
 
 <p align="center">
-  <img src="media/Presentation_16_diagram.png"
+  <img src="Presentation_16_diagram.png"
        alt="Overview of the Semantic-Skeleton framework"
        width="900">
 </p>
