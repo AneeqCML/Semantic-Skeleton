@@ -57,7 +57,7 @@ The overall flow of Semantic-Skeleton is portrayed in the following diagram:
 
 ### Prediction Examples
 
-<table> <tr> <td><img src="stiched_30.gif" alt="Puma Swimming" width="400"/></td> <td><img src="elkATTACK.gif" alt="Unseen Animal Elk Attacking" width="400"/></td> </tr> </table>
+<table> <tr> <td><img src="stitched_30.gif" alt="Puma Swimming" width="400"/></td> <td><img src="elkATTACK.gif" alt="Unseen Animal Elk Attacking" width="400"/></td> </tr> </table>
 
 ### BibTex Citation 
 ```bibtex
