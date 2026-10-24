@@ -20,8 +20,8 @@ parser.add_argument("--epochs", type=int, default=50)
 parser.add_argument("--skip_rate_train", type=int, default=1)
 parser.add_argument("--skip_rate_val", type=int, default=25)
 parser.add_argument("--joints", type=int, default=25)
-parser.add_argument("--input_n", type=int, default=25)
-parser.add_argument("--output_n", type=int, default=25)
+parser.add_argument("--input_n", type=int, default=25)#adjustable 
+parser.add_argument("--output_n", type=int, default=25)#adjustable 
 
 parser.add_argument('--mode', type=str, default='train', choices=['train', 'test'])
 parser.add_argument('--resume', action='store_true')
