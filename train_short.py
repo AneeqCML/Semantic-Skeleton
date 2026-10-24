@@ -21,8 +21,8 @@ parser.add_argument("--skip_rate_val", type=int, default=15)
 
 parser.add_argument("--joints", type=int, default=25)
 
-parser.add_argument("--input_n", type=int, default=20)
-parser.add_argument("--output_n", type=int, default=5)
+parser.add_argument("--input_n", type=int, default=20)#adjustable 
+parser.add_argument("--output_n", type=int, default=5)#adjustable 
 
 parser.add_argument("--mode", type=str, default="train", choices=["train", "test"])
 parser.add_argument("--resume", action="store_true")
