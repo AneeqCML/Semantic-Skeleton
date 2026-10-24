@@ -9,7 +9,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from model import ModelMain
-from dataset_2 import WindowMaskDataset
+from dataset import WindowMaskDataset
 
 
 parser = argparse.ArgumentParser()
