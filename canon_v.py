@@ -67,7 +67,14 @@ def extract_cam3d(data):
         return np.asarray(data["points"]["cam_3d"], dtype=np.float64)
     return None
 
-
+# PCA-based orientation is computed from the available pose sequence
+# to describe spatial joint relationships.
+#
+# Forecasting predictions are made from observed XYZ coordinates.
+# The downstream 25-joint selection explicitly ranks joints using
+# graph-level structure (subtree size and degree), not PCA scores.
+#
+# Note: PCA may indirectly affect ordering when structural scores tie. This wasn't used in AnimalSyn3D work, was just included as a potential tie breaker in the future. 
 def pca_axes(X):
     # X: (N,3) centered
     C = (X.T @ X) / max(len(X), 1)
