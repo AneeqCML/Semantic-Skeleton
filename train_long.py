@@ -278,7 +278,12 @@ if __name__ == '__main__':
 
     elif args.mode == 'test':
 
-        model_s = ModelMain(config, device, target_dim=(args.joints * 3))
+        import copy
+
+        config_short = copy.deepcopy(config)
+        config_short["diffusion"]["layers"] = 4
+        
+        model_s = ModelMain(config_short, device, target_dim=(args.joints * 3))
         model_l = ModelMain(config, device, target_dim=(args.joints * 3))
 
         model_s.load_state_dict(torch.load(f'{args.model_s}/model.pth'))
