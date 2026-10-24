@@ -312,6 +312,7 @@ if __name__ == "__main__":
             random_within_levels=args.random_within_levels,
             random_perm_scope=args.random_perm_scope,
             seed=args.seed,
+            return_metadata=False,
         )
         print(">>> Training dataset length:", len(dataset))
 
@@ -331,7 +332,7 @@ if __name__ == "__main__":
         valid_loader = None
 
         if args.val_dir is not None:
-            valid_dataset = WindowMaskDataset(args.val_dir, in_len=input_n, out_len=output_n)
+            valid_dataset = WindowMaskDataset(args.val_dir, in_len=input_n, out_len=output_n,  return_metadata=False,)
 
             print(">>> Validation dataset length:", len(valid_dataset))
 
@@ -356,7 +357,7 @@ if __name__ == "__main__":
         )
 
     elif args.mode == "test":
-        test_dataset = WindowMaskDataset(data_dir, in_len=input_n, out_len=output_n)
+        test_dataset = WindowMaskDataset(data_dir, in_len=input_n, out_len=output_n,  return_metadata=False,)
 
         print(">>> Test dataset length:", len(test_dataset))
 
