@@ -15,8 +15,8 @@ from dataset import WindowMaskDataset
 parser = argparse.ArgumentParser()
 
 parser.add_argument("--joints", type=int, default=25)
-parser.add_argument("--input_n", type=int, default=50)
-parser.add_argument("--output_n", type=int, default=25)
+parser.add_argument("--input_n", type=int, default=50)#adjustable 
+parser.add_argument("--output_n", type=int, default=25)#adjustable 
 
 parser.add_argument("--model_s", type=str, required=True)
 parser.add_argument("--model_l", type=str, required=True)
