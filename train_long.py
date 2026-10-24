@@ -291,7 +291,7 @@ if __name__ == '__main__':
 
         model_s.to(device)
         model_l.to(device)
-        dataset = WindowMaskDataset(data_dir, input_n, output_n)
+        dataset = WindowMaskDataset(data_dir, input_n, output_n,return_metadata=False,)
 
         test_loader = DataLoader(dataset, batch_size=config["train"]["batch_size_test"], shuffle=False)
 
