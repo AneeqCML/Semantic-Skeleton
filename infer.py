@@ -1,3 +1,4 @@
+
 import os
 import argparse
 import numpy as np
@@ -7,6 +8,7 @@ import copy
 
 import torch
 from torch.utils.data import DataLoader
+from torch.utils.data._utils.collate import default_collate
 
 from model import ModelMain
 from dataset import WindowMaskDataset
@@ -15,8 +17,8 @@ from dataset import WindowMaskDataset
 parser = argparse.ArgumentParser()
 
 parser.add_argument("--joints", type=int, default=25)
-parser.add_argument("--input_n", type=int, default=50)#adjustable 
-parser.add_argument("--output_n", type=int, default=25)#adjustable 
+parser.add_argument("--input_n", type=int, default=50)#adjustable
+parser.add_argument("--output_n", type=int, default=25)#adjustable
 
 parser.add_argument("--model_s", type=str, required=True)
 parser.add_argument("--model_l", type=str, required=True)
@@ -161,6 +163,16 @@ def safe_name(path_or_name):
     return base.replace(" ", "_")
 
 
+def collate_with_edges(samples):
+    edges = [item["edges"] for item in samples]
+    batch = default_collate([
+        {k: v for k, v in item.items() if k != "edges"}
+        for item in samples
+    ])
+    batch["edges"] = edges
+    return batch
+
+
 def evaluate():
     os.makedirs(args.save_dir, exist_ok=True)
 
@@ -192,7 +204,10 @@ def evaluate():
     model_l.eval()
 
     dataset = WindowMaskDataset(args.data_dir, args.input_n, args.output_n)
-    loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
+    loader = DataLoader(
+        dataset, batch_size=args.batch_size, shuffle=False,
+        collate_fn=collate_with_edges,
+    )
 
     all_preds = []
     all_gt = []
@@ -281,10 +296,11 @@ def evaluate():
                         torch.from_numpy(gt_tj3),
                     ).item()
 
+                    edges = batch["edges"][i].cpu().numpy()
                     extra = compute_pose_metrics(
                         pred_tj3,
                         gt_tj3,
-                        CANONICAL_EDGES,
+                        edges,
                         alpha=args.pcp_alpha,
                     )
 
@@ -321,7 +337,7 @@ def evaluate():
                         bone_error_after5=extra["bone_error"],
                         bone_length_error_after5=extra["bone_length_error"],
                         bone_std_after5=extra["bone_std"],
-                        canonical_edges=CANONICAL_EDGES,
+                        eval_connections=edges,
                     )
 
                     all_preds.append(pred_tj3)
@@ -358,7 +374,7 @@ def evaluate():
         os.path.join(args.save_dir, "predictions_all_after5.npz"),
         predictions_after5=preds,
         ground_truth_after5=gts,
-        canonical_edges=CANONICAL_EDGES,
+        edge_mode="per_sample_eval_connections",
     )
 
     overall_summary = pd.DataFrame([df.mean(numeric_only=True)])
