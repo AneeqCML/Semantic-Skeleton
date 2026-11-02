@@ -1,5 +1,5 @@
 # Semantic-Skeleton
-The Github Repository for the Paper Semantic-Skeleton: Canonizing Quadruped Skeletons for Cross-Skeletal Pose Forecasting
+The Github Repository for the Paper Semantic-Skeleton: Canonizing Quadruped Skeletons for Cross-Skeletal Pose Forecasting. Pleased to share this was accepted to WACV 2027!!
 
 # Problem
 Pose Forecasting today is mainly focused on humans, with limited works regarding animals. Works regarding animals in 3D pose forecasting do not support inferences across different animals with the same model, and do not support inference on unseen animals.
@@ -59,14 +59,5 @@ The overall flow of Semantic-Skeleton is portrayed in the following diagram:
 
 <table> <tr> <td><img src="stitched_30.gif" alt="Puma Swimming" width="400"/></td> <td><img src="elkATTACK.gif" alt="Unseen Animal Elk Attacking" width="400"/></td> </tr> </table>
 
-### BibTex Citation 
-```bibtex
-@inproceedings{noronha2025quadforecaster,
-  title={QuadForecaster: Diffusion-Based Quadruped Pose Prediction for Animal Communication Analysis},
-  author={Noronha, Ian and Chowdhury, Aneeq and Bharti, Saru and Kaur, Upinder},
-  booktitle={NeurIPS 2025 Workshop on AI for Animal Communication},
-  year={2025},
-  url={https://openreview.net/forum?id=tqSRcqCpqJ}
-}
-```
+
 ---
